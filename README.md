@@ -5,6 +5,6 @@ Perfect for learning, prototyping, and experimenting with API designs.
 
 ## 📁 Project Index
 
-| # | Example Code Directory                                 | Project Name              |
-|---|--------------------------------------------------------|---------------------------|
-| 1 | [`fastapi-inventory-crud`](./fastapi-inventory-crud/) | FastAPI Inventory CRUD    |
+| # | Example Code Directory                                 | Project Name              | Deployment |
+|---|--------------------------------------------------------|---------------------------|------------------|
+| 1 | [`fastapi-inventory-crud`](./fastapi-inventory-crud/) | FastAPI Inventory CRUD    | [View](https://fastapi-inventory-crud-b9ehbchdhzd7fvhp.eastus-01.azurewebsites.net/docs) |
