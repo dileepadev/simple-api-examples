@@ -24,23 +24,22 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Create and start virtual environment
+      # Removed duplicate venv creation step
+
+      - name: Install dependencies
         run: |
           python -m venv venv
-          source venv/bin/activate
-      
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+          . venv/bin/activate
+          pip install -r requirements.txt
+        working-directory: fastapi-inventory-crud/
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
-      - name: Upload artifact for deployment jobs
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: |
-            .
-            !venv/
+          path: fastapi-inventory-crud/
 
   deploy:
     runs-on: ubuntu-latest
@@ -54,6 +53,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: python-app
+          # Removed path to avoid nested directories
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -68,4 +68,4 @@ jobs:
         with:
           app-name: 'fastapi-inventory-crud'
           slot-name: 'Production'
-          
+          package: fastapi-inventory-crud/
